@@ -114,7 +114,7 @@
                     <span class="badge-item"><i class="bi bi-cpu"></i> TensorFlow.js</span>
                     <span class="badge-item"><i class="bi bi-eye-slash"></i> Zero Telemetry</span>
                 </div>
-                <p class="footer-copy mt-3">© {{ date('Y') }}Luis Felipe Dorado Mafla - Karen Sofia Ortega Criollo</p>
+                <p class="footer-copy mt-3">© {{ date('Y') }} Luis Felipe Dorado Mafla - Karen Sofia Ortega Criollo</p>
             </div>
         </div>
         <div class="footer-line mt-4"></div>
