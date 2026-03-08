@@ -13,7 +13,7 @@
                     Sistema activo — Protección en tiempo real
                 </div>
                 <h1 class="hero-title anim-fade-up anim-delay-1">
-                    La <span class="highlight-cyan">Capa</span><br>
+                    La <span class="highlight-cyan">Capa Invisible</span><br>
                     que protege tu<br>
                     <span class="highlight-cyan" style="text-decoration:underline;text-decoration-color:rgba(0,229,255,0.3);text-underline-offset:6px;">identidad digital</span>
                 </h1>
