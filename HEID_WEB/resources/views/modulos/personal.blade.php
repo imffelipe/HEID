@@ -3,28 +3,21 @@
 
 @section('contenido')
 
-{{-- ── PAGE HERO ─────────────────────────────────────────── --}}
 <div class="page-hero">
-    <div class="page-hero-glow" style="background: var(--heid-cyan);"></div>
+    <div class="page-hero-glow" style="background:var(--heid-cyan);"></div>
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Inicio</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('home') }}#modulos">Módulos</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Módulos</a></li>
                 <li class="breadcrumb-item active">HEID Personal</li>
             </ol>
         </nav>
         <div class="row align-items-center g-5">
             <div class="col-lg-7 anim-fade-up">
                 <span class="module-tag personal mb-3 d-inline-block">HEID Personal</span>
-                <h1 class="page-title" style="color:#fff;">
-                    Tu <span class="highlight-cyan">escudo digital</span><br>
-                    para el ciudadano activo
-                </h1>
-                <p class="page-subtitle">
-                    Detección de Deepfakes, suplantación de identidad y transacciones sospechosas.
-                    Protección integral para quien vive en el mundo digital.
-                </p>
+                <h1 class="page-title">Tu <span class="highlight-cyan">escudo digital</span><br>para el ciudadano activo</h1>
+                <p class="page-subtitle">Detección de Deepfakes, suplantación de identidad y transacciones sospechosas. Protección integral para quien vive en el mundo digital.</p>
                 <div class="d-flex flex-wrap gap-3 mt-4">
                     <a href="{{ route('como-funciona') }}" class="btn heid-btn-primary">
                         <i class="bi bi-cpu me-2"></i>Ver cómo funciona
@@ -35,7 +28,7 @@
                 </div>
             </div>
             <div class="col-lg-5 d-none d-lg-flex justify-content-center anim-fade-in anim-delay-2">
-                <div class="module-visual" style="color:var(--heid-cyan); filter:drop-shadow(0 0 30px rgba(0,229,255,0.3));">
+                <div class="module-visual" style="color:var(--heid-cyan);filter:drop-shadow(0 0 30px rgba(0,229,255,0.3));">
                     <i class="bi bi-person-badge-fill"></i>
                     <div class="visual-ring vr-1" style="border-color:rgba(0,229,255,0.2)"></div>
                     <div class="visual-ring vr-2" style="border-color:rgba(0,229,255,0.1)"></div>
@@ -45,7 +38,6 @@
     </div>
 </div>
 
-{{-- ── AMENAZAS ─────────────────────────────────────────── --}}
 <section class="heid-section">
     <div class="container">
         <div class="section-header text-center mb-5">
@@ -85,7 +77,6 @@
     </div>
 </section>
 
-{{-- ── DASHBOARD PREVIEW ────────────────────────────────── --}}
 <section class="heid-section-alt">
     <div class="container">
         <div class="section-header text-center mb-5">
@@ -98,7 +89,9 @@
                 <div class="dashboard-mock">
                     <div class="dm-header">
                         <span class="dm-title font-mono">// Estado de seguridad — Tiempo real</span>
-                        <span class="dm-status"><span class="dot-pulse d-inline-block me-1" style="width:6px;height:6px;background:var(--heid-green);border-radius:50%;animation:pulse 1.5s infinite;"></span>Activo</span>
+                        <span class="dm-status">
+                            <span style="display:inline-block;width:6px;height:6px;background:var(--heid-green);border-radius:50%;animation:pulse 1.5s infinite;margin-right:4px;"></span>Activo
+                        </span>
                     </div>
                     <div class="dm-body">
                         <div class="dm-metric green">
@@ -148,7 +141,6 @@
     </div>
 </section>
 
-{{-- ── NAVEGACIÓN A OTROS MÓDULOS ──────────────────────── --}}
 <section class="heid-section">
     <div class="container">
         <div class="section-header text-center mb-5">
@@ -183,58 +175,35 @@
 </section>
 
 @endsection
+
 @push('styles')
 <style>
-.page-title    { font-family:var(--font-display); font-weight:800; font-size:clamp(2rem,4vw,3.2rem); line-height:1.1; margin-bottom:1rem; }
+.page-title    { font-family:var(--font-display); font-weight:800; font-size:clamp(2rem,4vw,3.2rem); line-height:1.1; color:#fff; margin-bottom:1rem; }
 .page-subtitle { font-size:1.05rem; color:var(--heid-text-dim); max-width:500px; }
-.module-visual {
-    width:200px; height:200px; position:relative;
-    display:flex; align-items:center; justify-content:center;
-    font-size:4rem; animation: float 3s ease-in-out infinite;
-}
-.visual-ring { position:absolute; border-radius:50%; border:1px solid; animation: expand 3s infinite ease-out; }
+.module-visual { width:200px; height:200px; position:relative; display:flex; align-items:center; justify-content:center; font-size:4rem; animation:float 3s ease-in-out infinite; }
+.visual-ring { position:absolute; border-radius:50%; border:1px solid; animation:expand 3s infinite ease-out; }
 .vr-1 { width:150px; height:150px; animation-delay:0s; }
 .vr-2 { width:210px; height:210px; animation-delay:1.5s; }
-.threat-icon { font-size:2rem; margin-bottom:0.75rem; }
+.threat-icon  { font-size:2rem; margin-bottom:0.75rem; }
 .threat-title { font-family:var(--font-display); font-weight:700; font-size:1rem; color:#fff; margin-bottom:0.4rem; }
 .threat-desc  { font-size:0.83rem; color:var(--heid-text-dim); margin:0; }
 .feat-icon  { font-size:1.8rem; margin-bottom:0.75rem; }
 .feat-title { font-family:var(--font-display); font-weight:700; font-size:1rem; color:#fff; margin-bottom:0.4rem; }
 .feat-desc  { font-size:0.83rem; color:var(--heid-text-dim); margin:0; }
-
-/* Dashboard mock */
-.dashboard-mock {
-    background: var(--heid-bg-card);
-    border: 1px solid var(--heid-border);
-    border-radius: 16px; overflow: hidden;
-}
-.dm-header {
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--heid-border);
-    display: flex; justify-content: space-between; align-items: center;
-}
+.dashboard-mock { background:var(--heid-bg-card); border:1px solid var(--heid-border); border-radius:16px; overflow:hidden; }
+.dm-header { padding:1rem 1.5rem; border-bottom:1px solid var(--heid-border); display:flex; justify-content:space-between; align-items:center; }
 .dm-title  { font-family:var(--font-mono); font-size:0.75rem; color:var(--heid-text-dim); }
-.dm-status { font-family:var(--font-mono); font-size:0.72rem; color:var(--heid-green); display:flex; align-items:center; gap:0.3rem; }
-.dm-body   { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
-.dm-metric {
-    display: flex; align-items: center; gap: 1rem;
-    padding: 0.9rem 1rem; border-radius: 10px;
-    border: 1px solid;
-}
-.dm-metric i { font-size: 1.4rem; flex-shrink: 0; }
+.dm-status { font-family:var(--font-mono); font-size:0.72rem; color:var(--heid-green); display:flex; align-items:center; }
+.dm-body   { padding:1.5rem; display:flex; flex-direction:column; gap:1rem; }
+.dm-metric { display:flex; align-items:center; gap:1rem; padding:0.9rem 1rem; border-radius:10px; border:1px solid; }
+.dm-metric i { font-size:1.4rem; flex-shrink:0; }
 .dm-metric-val   { display:block; font-family:var(--font-display); font-weight:700; font-size:0.95rem; color:#fff; }
 .dm-metric-label { display:block; font-size:0.72rem; color:var(--heid-text-dim); }
 .dm-metric.green  { background:rgba(0,255,136,0.05);   border-color:rgba(0,255,136,0.15);   color:var(--heid-green); }
 .dm-metric.cyan   { background:rgba(0,229,255,0.05);   border-color:rgba(0,229,255,0.15);   color:var(--heid-cyan); }
 .dm-metric.orange { background:rgba(255,107,53,0.05);  border-color:rgba(255,107,53,0.15);  color:var(--heid-orange); }
 .dm-metric.purple { background:rgba(167,139,250,0.05); border-color:rgba(167,139,250,0.15); color:#a78bfa; }
-
-.module-nav-card {
-    background:var(--heid-bg-card); border:1px solid var(--heid-border);
-    border-radius:14px; padding:1.5rem;
-    display:flex; align-items:center; gap:1rem;
-    transition:transform 0.3s, border-color 0.3s;
-}
+.module-nav-card { background:var(--heid-bg-card); border:1px solid var(--heid-border); border-radius:14px; padding:1.5rem; display:flex; align-items:center; gap:1rem; transition:transform 0.3s,border-color 0.3s; }
 .module-nav-card:hover { transform:translateY(-3px); }
 .kids-nav:hover   { border-color:rgba(0,255,136,0.3); }
 .silver-nav:hover { border-color:rgba(160,180,200,0.3); }

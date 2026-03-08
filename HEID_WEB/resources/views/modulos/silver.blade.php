@@ -3,30 +3,23 @@
 
 @section('contenido')
 
-{{-- ── PAGE HERO ─────────────────────────────────────────── --}}
 <div class="page-hero">
-    <div class="page-hero-glow" style="background: var(--heid-silver);"></div>
+    <div class="page-hero-glow" style="background:var(--heid-silver);"></div>
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Inicio</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('home') }}#modulos">Módulos</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Módulos</a></li>
                 <li class="breadcrumb-item active">HEID Silver</li>
             </ol>
         </nav>
         <div class="row align-items-center g-5">
             <div class="col-lg-7 anim-fade-up">
                 <span class="module-tag silver mb-3 d-inline-block">HEID Silver</span>
-                <h1 class="page-title" style="color:#fff;">
-                    Protección para<br>
-                    <span style="color:var(--heid-silver);">adultos mayores</span>
-                </h1>
-                <p class="page-subtitle">
-                    Escudo inteligente contra estafas bancarias y clonación de voz.
-                    Diseñado para ser simple, confiable y tranquilizador.
-                </p>
+                <h1 class="page-title">Protección para<br><span style="color:var(--heid-silver);">adultos mayores</span></h1>
+                <p class="page-subtitle">Escudo inteligente contra estafas bancarias y clonación de voz. Diseñado para ser simple, confiable y tranquilizador.</p>
                 <div class="d-flex flex-wrap gap-3 mt-4">
-                    <a href="{{ route('como-funciona') }}" class="btn heid-btn-primary" style="background:var(--heid-silver); color:var(--heid-bg);">
+                    <a href="{{ route('como-funciona') }}" class="btn heid-btn-primary" style="background:var(--heid-silver);color:var(--heid-bg);">
                         <i class="bi bi-cpu me-2"></i>Ver cómo funciona
                     </a>
                     <a href="{{ route('nosotros') }}" class="btn heid-btn-ghost">
@@ -35,7 +28,7 @@
                 </div>
             </div>
             <div class="col-lg-5 d-none d-lg-flex justify-content-center anim-fade-in anim-delay-2">
-                <div class="module-visual" style="color:var(--heid-silver); filter:drop-shadow(0 0 30px rgba(160,180,200,0.3));">
+                <div class="module-visual" style="color:var(--heid-silver);filter:drop-shadow(0 0 30px rgba(160,180,200,0.3));">
                     <i class="bi bi-person-heart"></i>
                     <div class="visual-ring vr-1" style="border-color:rgba(160,180,200,0.2)"></div>
                     <div class="visual-ring vr-2" style="border-color:rgba(160,180,200,0.12)"></div>
@@ -45,7 +38,6 @@
     </div>
 </div>
 
-{{-- ── AMENAZAS ─────────────────────────────────────────── --}}
 <section class="heid-section">
     <div class="container">
         <div class="section-header text-center mb-5">
@@ -85,7 +77,6 @@
     </div>
 </section>
 
-{{-- ── DISEÑO PARA ADULTOS MAYORES ─────────────────────── --}}
 <section class="heid-section-alt">
     <div class="container">
         <div class="section-header text-center mb-5">
@@ -139,7 +130,6 @@
     </div>
 </section>
 
-{{-- ── NAVEGACIÓN A OTROS MÓDULOS ──────────────────────── --}}
 <section class="heid-section">
     <div class="container">
         <div class="section-header text-center mb-5">
@@ -174,30 +164,22 @@
 </section>
 
 @endsection
+
 @push('styles')
 <style>
-.page-title    { font-family:var(--font-display); font-weight:800; font-size:clamp(2rem,4vw,3.2rem); line-height:1.1; margin-bottom:1rem; }
+.page-title    { font-family:var(--font-display); font-weight:800; font-size:clamp(2rem,4vw,3.2rem); line-height:1.1; color:#fff; margin-bottom:1rem; }
 .page-subtitle { font-size:1.05rem; color:var(--heid-text-dim); max-width:500px; }
-.module-visual {
-    width:200px; height:200px; position:relative;
-    display:flex; align-items:center; justify-content:center;
-    font-size:4rem; animation: float 3s ease-in-out infinite;
-}
-.visual-ring { position:absolute; border-radius:50%; border:1px solid; animation: expand 3s infinite ease-out; }
+.module-visual { width:200px; height:200px; position:relative; display:flex; align-items:center; justify-content:center; font-size:4rem; animation:float 3s ease-in-out infinite; }
+.visual-ring { position:absolute; border-radius:50%; border:1px solid; animation:expand 3s infinite ease-out; }
 .vr-1 { width:150px; height:150px; animation-delay:0s; }
 .vr-2 { width:210px; height:210px; animation-delay:1.5s; }
-.threat-icon { font-size:2rem; margin-bottom:0.75rem; }
+.threat-icon  { font-size:2rem; margin-bottom:0.75rem; }
 .threat-title { font-family:var(--font-display); font-weight:700; font-size:1rem; color:#fff; margin-bottom:0.4rem; }
 .threat-desc  { font-size:0.83rem; color:var(--heid-text-dim); margin:0; }
 .feat-icon  { font-size:1.8rem; margin-bottom:0.75rem; }
 .feat-title { font-family:var(--font-display); font-weight:700; font-size:1rem; color:#fff; margin-bottom:0.4rem; }
 .feat-desc  { font-size:0.83rem; color:var(--heid-text-dim); margin:0; }
-.module-nav-card {
-    background:var(--heid-bg-card); border:1px solid var(--heid-border);
-    border-radius:14px; padding:1.5rem;
-    display:flex; align-items:center; gap:1rem;
-    transition:transform 0.3s, border-color 0.3s;
-}
+.module-nav-card { background:var(--heid-bg-card); border:1px solid var(--heid-border); border-radius:14px; padding:1.5rem; display:flex; align-items:center; gap:1rem; transition:transform 0.3s,border-color 0.3s; }
 .module-nav-card:hover { transform:translateY(-3px); }
 .kids-nav:hover     { border-color:rgba(0,255,136,0.3); }
 .personal-nav:hover { border-color:rgba(0,229,255,0.3); }
