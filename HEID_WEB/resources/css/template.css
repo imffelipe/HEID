@@ -1,7 +1,3 @@
-/* ============================================================
-   HEID — template.css  |  Base global + Navbar + Footer
-   ============================================================ */
-
 :root {
     --heid-bg:           #080f1a;
     --heid-bg-2:         #0d1a2e;
@@ -21,7 +17,6 @@
     --nav-height:        72px;
 }
 
-/* ── Base ───────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -41,7 +36,6 @@ body {
     background-size: 60px 60px;
 }
 
-/* ── NAVBAR ─────────────────────────────────────────────── */
 .heid-navbar {
     height: var(--nav-height);
     background: rgba(8, 15, 26, 0.75);
@@ -55,7 +49,6 @@ body {
     box-shadow: 0 4px 30px rgba(0,229,255,0.07);
 }
 
-/* Logo */
 .heid-logo {
     font-family: var(--font-display);
     font-weight: 800;
@@ -66,7 +59,6 @@ body {
 }
 .heid-logo .logo-bracket { color: var(--heid-cyan); font-weight: 400; }
 
-/* Nav links */
 .heid-link {
     font-size: 0.88rem;
     font-weight: 500;
@@ -92,7 +84,6 @@ body {
 .heid-link:hover::after,
 .heid-link.active::after { width: 65%; }
 
-/* Dropdown */
 .heid-dropdown {
     background: var(--heid-bg-2);
     border: 1px solid var(--heid-border);
@@ -117,7 +108,6 @@ body {
     color: var(--heid-cyan);
 }
 
-/* Module tags */
 .module-tag {
     font-family: var(--font-mono);
     font-size: 0.65rem;
@@ -131,7 +121,6 @@ body {
 .module-tag.silver   { background: rgba(160,180,200,0.1); color: var(--heid-silver); border: 1px solid rgba(160,180,200,0.2); }
 .module-tag.personal { background: var(--heid-cyan-dim);  color: var(--heid-cyan);   border: 1px solid rgba(0,229,255,0.25); }
 
-/* CTA Button */
 .heid-cta-btn {
     background: transparent;
     color: var(--heid-cyan) !important;
@@ -150,7 +139,6 @@ body {
     transform: translateY(-1px);
 }
 
-/* Hamburger */
 .heid-toggler {
     border: 1px solid var(--heid-border);
     background: transparent;
@@ -182,7 +170,6 @@ body {
     .heid-dropdown { background: transparent; border: none; box-shadow: none; }
 }
 
-/* ── FOOTER ─────────────────────────────────────────────── */
 .heid-footer {
     background: var(--heid-bg-2);
     border-top: 1px solid var(--heid-border);
@@ -206,7 +193,7 @@ body {
     text-transform: uppercase;
     margin-bottom: 0.3rem;
 }
-.footer-sub   { font-size: 0.8rem; color: var(--heid-text-dim); margin: 0; }
+.footer-sub       { font-size: 0.8rem; color: var(--heid-text-dim); margin: 0; }
 .footer-col-title {
     font-family: var(--font-mono);
     font-size: 0.72rem;
@@ -225,9 +212,8 @@ body {
     gap: 0.3rem;
     transition: color 0.2s;
 }
-.footer-links a i { font-size: 0.65rem; }
+.footer-links a i  { font-size: 0.65rem; }
 .footer-links a:hover { color: var(--heid-cyan); }
-
 .footer-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .badge-item {
     font-family: var(--font-mono);
@@ -242,20 +228,18 @@ body {
     transition: color 0.2s, border-color 0.2s;
 }
 .badge-item:hover { color: var(--heid-cyan); border-color: rgba(0,229,255,0.3); }
-.footer-copy  { font-size: 0.76rem; color: var(--heid-text-dim); margin: 0; }
-.footer-line  {
+.footer-copy { font-size: 0.76rem; color: var(--heid-text-dim); margin: 0; }
+.footer-line {
     height: 1px;
     background: linear-gradient(to right, transparent, var(--heid-border), transparent);
 }
 
-/* ── Utilidades globales ────────────────────────────────── */
 .text-cyan    { color: var(--heid-cyan)   !important; }
 .text-green   { color: var(--heid-green)  !important; }
 .text-silver  { color: var(--heid-silver) !important; }
 .font-mono    { font-family: var(--font-mono)    !important; }
 .font-display { font-family: var(--font-display) !important; }
 
-/* Secciones estándar */
 .heid-section     { padding: 6rem 0; }
 .heid-section-alt { padding: 6rem 0; background: var(--heid-bg-2); }
 
@@ -283,7 +267,6 @@ body {
 .highlight-cyan  { color: var(--heid-cyan); }
 .highlight-green { color: var(--heid-green); }
 
-/* Botones globales */
 .heid-btn-primary {
     background: var(--heid-cyan);
     color: var(--heid-bg) !important;
@@ -311,7 +294,6 @@ body {
 }
 .heid-btn-ghost:hover { border-color: var(--heid-cyan); color: var(--heid-cyan) !important; }
 
-/* Page hero (páginas internas) */
 .page-hero {
     padding: calc(var(--nav-height) + 3.5rem) 0 3.5rem;
     position: relative;
@@ -335,7 +317,6 @@ body {
 .page-hero .breadcrumb-item.active { color: var(--heid-text-dim); }
 .page-hero .breadcrumb-item + .breadcrumb-item::before { color: var(--heid-text-dim); }
 
-/* Cards generales */
 .heid-card {
     background: var(--heid-bg-card);
     border: 1px solid var(--heid-border);
@@ -349,7 +330,6 @@ body {
     box-shadow: 0 16px 40px rgba(0,0,0,0.3);
 }
 
-/* Animaciones */
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -362,6 +342,15 @@ body {
     0%, 100% { opacity: 1; transform: scale(1); }
     50%       { opacity: 0.5; transform: scale(1.3); }
 }
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+}
+@keyframes expand {
+    0%   { opacity: 0.6; transform: scale(0.85); }
+    100% { opacity: 0;   transform: scale(1.1); }
+}
+
 .anim-fade-up  { animation: fadeUp  0.6s ease both; }
 .anim-fade-in  { animation: fadeIn  0.6s ease both; }
 .anim-delay-1  { animation-delay: 0.1s; }
