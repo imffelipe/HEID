@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\paginacontroller;
+use App\Http\Controllers\pqrsController;
+
+route::get('/',[paginacontroller::class,'inicio'])->name('inicio');
+route::get('/',[paginacontroller::class,'comofunciona'])->name('comofunciona');
+route::get('/',[paginacontroller::class,'nosotros'])->name('nosotros');
 
 Route::get('/', function () {
     return view('index');
