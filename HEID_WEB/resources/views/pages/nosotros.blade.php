@@ -164,7 +164,759 @@
     </div>
 </section>
 
+
+<section class="heid-section-alt" id="pqrs">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <span class="section-tag">// iniciar conexión</span>
+            <h2 class="section-title">Contáctanos <span style="color:#a78bfa;">/ PQRS</span></h2>
+            <p class="section-desc">¿Tienes una petición, queja, reclamo o felicitación? Escríbenos, cada mensaje importa.</p>
+        </div>
+ 
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+ 
+                <div class="contact-terminal">
+                    {{-- Topbar decorativa --}}
+                    <div class="terminal-topbar">
+                        <div class="terminal-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="terminal-title font-mono">heid@pqrs ~ <span class="blink-cursor">▌</span></span>
+                        <span class="font-mono" style="font-size:0.7rem;color:var(--heid-text-dim);">pqrs.init</span>
+                    </div>
+ 
+                    <form id="pqrsForm" class="contact-form-body" novalidate>
+ 
+                        {{-- Fila 1: Nombres + Apellidos --}}
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <div class="form-field-group">
+                                    <label class="field-label" for="pq_nombres">
+                                        <i class="bi bi-person-fill"></i> Nombres
+                                        <span class="field-required">*</span>
+                                    </label>
+                                    <div class="field-input-wrap">
+                                        <input type="text" id="pq_nombres" name="Nombres" class="heid-input"
+                                               placeholder="ej. Ana María" autocomplete="given-name">
+                                        <div class="field-line"></div>
+                                    </div>
+                                    <span class="field-error" id="err_nombres"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-field-group">
+                                    <label class="field-label" for="pq_apellidos">
+                                        <i class="bi bi-person-lines-fill"></i> Apellidos
+                                        <span class="field-required">*</span>
+                                    </label>
+                                    <div class="field-input-wrap">
+                                        <input type="text" id="pq_apellidos" name="Apellidos" class="heid-input"
+                                               placeholder="ej. García López" autocomplete="family-name">
+                                        <div class="field-line"></div>
+                                    </div>
+                                    <span class="field-error" id="err_apellidos"></span>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        {{-- Fila 2: Correo + Tipo (selector visual) --}}
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <div class="form-field-group">
+                                    <label class="field-label" for="pq_correo">
+                                        <i class="bi bi-envelope-fill"></i> Correo electrónico
+                                        <span class="field-required">*</span>
+                                    </label>
+                                    <div class="field-input-wrap">
+                                        <input type="email" id="pq_correo" name="Correo" class="heid-input"
+                                               placeholder="nombre@ejemplo.com" autocomplete="email">
+                                        <div class="field-line"></div>
+                                    </div>
+                                    <span class="field-error" id="err_correo"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-field-group">
+                                    <label class="field-label" for="pq_tipo">
+                                        <i class="bi bi-tag-fill"></i> Tipo de solicitud
+                                        <span class="field-required">*</span>
+                                    </label>
+                                    <div class="field-input-wrap field-select-wrap">
+                                        <select id="pq_tipo" name="tipo" class="heid-input heid-select">
+                                            <option value="" disabled selected>— Selecciona el tipo —</option>
+                                            <option value="Queja">⚠️ Queja</option>
+                                            <option value="Peticio">📋 Petición</option>
+                                            <option value="Felicitaciones">🌟 Felicitaciones</option>
+                                        </select>
+                                        <i class="bi bi-chevron-down select-chevron"></i>
+                                        <div class="field-line"></div>
+                                    </div>
+                                    <span class="field-error" id="err_tipo"></span>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        {{-- Badge visual del tipo seleccionado --}}
+                        <div id="tipoBadgeWrap" class="mb-3 d-none">
+                            <div class="tipo-badge-display">
+                                <span class="tipo-badge-label font-mono">// tipo seleccionado:</span>
+                                <span class="tipo-badge" id="tipoBadge"></span>
+                            </div>
+                        </div>
+ 
+                        {{-- Mensaje --}}
+                        <div class="form-field-group mb-3">
+                            <label class="field-label" for="pq_mensaje">
+                                <i class="bi bi-chat-dots-fill"></i> Mensaje
+                                <span class="field-required">*</span>
+                            </label>
+                            <div class="field-input-wrap">
+                                <textarea id="pq_mensaje" name="Mensaje" class="heid-input heid-textarea"
+                                          placeholder="Describe tu queja, petición o felicitación con el mayor detalle posible..."
+                                          rows="4" maxlength="600"></textarea>
+                                <div class="field-line"></div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-1">
+                                <span class="field-error" id="err_mensaje"></span>
+                                <span class="char-counter font-mono" id="charCounter">0 / 600</span>
+                            </div>
+                        </div>
+ 
+                        {{-- Acepto términos --}}
+                        <div class="form-field-group mb-4">
+                            <label class="acepto-label" for="pq_acepto">
+                                <div class="acepto-checkbox-wrap">
+                                    <input type="checkbox" id="pq_acepto" name="acepto" value="1" class="acepto-input">
+                                    <span class="acepto-box">
+                                        <i class="bi bi-check2 acepto-check-icon"></i>
+                                    </span>
+                                </div>
+                                <span class="acepto-text">
+                                    Acepto el tratamiento de mis datos personales conforme a la
+                                    <a href="#" class="acepto-link">política de privacidad de HEID</a>.
+                                    <span class="field-required">*</span>
+                                </span>
+                            </label>
+                            <span class="field-error ms-1" id="err_acepto"></span>
+                        </div>
+ 
+                        {{-- Submit --}}
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="heid-submit-btn" id="pqrsSubmitBtn">
+                                <span class="btn-text">
+                                    <i class="bi bi-send-fill me-2"></i>Enviar PQRS
+                                </span>
+                                <span class="btn-loading d-none">
+                                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                    Enviando...
+                                </span>
+                            </button>
+                        </div>
+ 
+                    </form>
+ 
+                    {{-- Estado de éxito --}}
+                    <div class="contact-success d-none" id="pqrsSuccess">
+                        <div class="success-icon"><i class="bi bi-check-circle-fill"></i></div>
+                        <h4 class="success-title">¡PQRS enviada!</h4>
+                        <p class="success-desc">
+                            Tu solicitud ha sido registrada correctamente.<br>
+                            <span class="font-mono" style="color:var(--heid-cyan);font-size:0.78rem;">
+                                // responderemos a tu correo pronto
+                            </span>
+                        </p>
+                        <button class="heid-reset-btn" id="pqrsResetBtn">Enviar otra solicitud</button>
+                    </div>
+ 
+                </div>
+                {{-- /terminal --}}
+ 
+            </div>
+        </div>
+    </div>
+</section>
+
 @endsection
+
+@push('styles')
+<style>
+/* ── Terminal shell ── */
+.contact-terminal {
+    background: var(--heid-bg-card, #0d1117);
+    border: 1px solid var(--heid-border, rgba(255,255,255,0.08));
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(167,139,250,0.06), 0 20px 60px rgba(0,0,0,0.4);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.contact-terminal:hover {
+    border-color: rgba(167,139,250,0.25);
+    box-shadow: 0 0 80px rgba(167,139,250,0.1), 0 20px 60px rgba(0,0,0,0.4);
+}
+ 
+/* Topbar */
+.terminal-topbar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid var(--heid-border, rgba(255,255,255,0.07));
+}
+.terminal-dots { display:flex; gap:6px; }
+.dot { width:12px; height:12px; border-radius:50%; }
+.dot-red    { background:#ff5f57; }
+.dot-yellow { background:#febc2e; }
+.dot-green  { background:#28c840; }
+.terminal-title {
+    font-family: var(--font-mono,'Courier New',monospace);
+    font-size: 0.78rem;
+    color: var(--heid-text-dim,#8892a4);
+    flex: 1;
+    text-align: center;
+}
+.blink-cursor { animation: blink 1.1s step-end infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+ 
+/* Form body */
+.contact-form-body { padding: 2rem 2rem 1.75rem; }
+ 
+/* Field groups */
+.form-field-group { display:flex; flex-direction:column; }
+.field-label {
+    font-family: var(--font-mono,'Courier New',monospace);
+    font-size: 0.72rem;
+    color: var(--heid-text-dim, #8892a4);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.45rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.field-required { color: #f87171; font-size:0.65rem; }
+ 
+/* Inputs */
+.field-input-wrap { position:relative; }
+.heid-input {
+    width: 100%;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid var(--heid-border, rgba(255,255,255,0.08));
+    border-radius: 8px;
+    color: #e4e8f0;
+    font-size: 0.88rem;
+    padding: 0.6rem 0.9rem;
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+    font-family: inherit;
+}
+.heid-input::placeholder { color: rgba(136,146,164,0.45); font-size:0.82rem; }
+.heid-input:focus {
+    border-color: rgba(167,139,250,0.55);
+    box-shadow: 0 0 0 3px rgba(167,139,250,0.1);
+    background: rgba(167,139,250,0.04);
+}
+.heid-input.is-invalid {
+    border-color: rgba(248,113,113,0.6);
+    box-shadow: 0 0 0 3px rgba(248,113,113,0.08);
+}
+.heid-input.is-valid { border-color: rgba(52,211,153,0.5); }
+ 
+/* Select */
+.field-select-wrap { position:relative; }
+.heid-select { appearance:none; cursor:pointer; padding-right:2.5rem; }
+.select-chevron {
+    position: absolute;
+    right: 0.85rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--heid-text-dim,#8892a4);
+    font-size: 0.75rem;
+    pointer-events: none;
+    transition: transform 0.2s;
+}
+.heid-select:focus ~ .select-chevron { transform: translateY(-50%) rotate(180deg); }
+.heid-select option { background: #1a1f2e; color: #e4e8f0; }
+ 
+/* Tipo badge */
+.tipo-badge-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--heid-border,rgba(255,255,255,0.07));
+    border-radius: 8px;
+    padding: 0.45rem 0.9rem;
+}
+.tipo-badge-label { font-size:0.68rem; color:var(--heid-text-dim,#8892a4); }
+.tipo-badge {
+    font-family: var(--font-mono,'Courier New',monospace);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+}
+.tipo-badge.queja         { background:rgba(248,113,113,0.15); color:#f87171; border:1px solid rgba(248,113,113,0.3); }
+.tipo-badge.peticion      { background:rgba(0,229,255,0.1);    color:var(--heid-cyan,#00e5ff); border:1px solid rgba(0,229,255,0.25); }
+.tipo-badge.felicitaciones{ background:rgba(167,139,250,0.12); color:#a78bfa; border:1px solid rgba(167,139,250,0.3); }
+ 
+/* Textarea */
+.heid-textarea { resize: vertical; min-height: 110px; line-height:1.6; }
+ 
+/* Char counter */
+.char-counter { font-size:0.68rem; color:var(--heid-text-dim,#8892a4); transition:color 0.2s; }
+.char-counter.warn  { color:#febc2e; }
+.char-counter.limit { color:#f87171; }
+ 
+/* Animated bottom line on focus */
+.field-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #a78bfa, var(--heid-cyan,#00e5ff));
+    border-radius: 2px;
+    transition: width 0.3s ease;
+    pointer-events: none;
+}
+.heid-input:focus ~ .field-line { width: calc(100% - 16px); }
+ 
+/* Field error */
+.field-error {
+    font-size: 0.7rem;
+    color: #f87171;
+    min-height: 1em;
+    margin-top: 0.2rem;
+    font-family: var(--font-mono,'Courier New',monospace);
+}
+ 
+/* ── Acepto checkbox personalizado ── */
+.acepto-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    user-select: none;
+}
+.acepto-checkbox-wrap { flex-shrink:0; position:relative; margin-top:2px; }
+.acepto-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.acepto-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1.5px solid var(--heid-border,rgba(255,255,255,0.15));
+    background: rgba(0,0,0,0.3);
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.acepto-check-icon {
+    font-size: 0.75rem;
+    color: #fff;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.2s, transform 0.2s cubic-bezier(.34,1.56,.64,1);
+}
+.acepto-input:checked ~ .acepto-box {
+    background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    border-color: #a78bfa;
+    box-shadow: 0 0 10px rgba(167,139,250,0.35);
+}
+.acepto-input:checked ~ .acepto-box .acepto-check-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+.acepto-text {
+    font-size: 0.82rem;
+    color: var(--heid-text-dim,#8892a4);
+    line-height: 1.5;
+}
+.acepto-link { color:#a78bfa; text-decoration:none; border-bottom:1px dashed rgba(167,139,250,0.4); }
+.acepto-link:hover { color:#c4b5fd; border-bottom-color:#c4b5fd; }
+ 
+/* ── Submit button ── */
+.heid-submit-btn {
+    background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 2rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.03em;
+    position: relative;
+    overflow: hidden;
+}
+.heid-submit-btn::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+    opacity:0;
+    transition:opacity 0.2s;
+}
+.heid-submit-btn:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(167,139,250,0.4); }
+.heid-submit-btn:hover::before { opacity:1; }
+.heid-submit-btn:active { transform:translateY(0); }
+.heid-submit-btn:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
+ 
+/* ── Success state ── */
+.contact-success {
+    padding: 3rem 2rem;
+    text-align: center;
+    animation: fadeInUp 0.5s ease forwards;
+}
+@keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.success-icon {
+    font-size: 3rem;
+    color: #34d399;
+    margin-bottom: 1rem;
+    animation: popIn 0.4s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popIn { from{transform:scale(0)} to{transform:scale(1)} }
+.success-title { font-family:var(--font-display,'sans-serif'); font-weight:800; font-size:1.5rem; color:#fff; margin-bottom:0.5rem; }
+.success-desc  { color:var(--heid-text-dim,#8892a4); font-size:0.9rem; line-height:1.7; margin-bottom:1.5rem; }
+.heid-reset-btn {
+    background: transparent;
+    border: 1px solid rgba(167,139,250,0.35);
+    color: #a78bfa;
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.82rem;
+    cursor: pointer;
+    font-family: var(--font-mono,'Courier New',monospace);
+    transition: background 0.2s, border-color 0.2s;
+}
+.heid-reset-btn:hover { background:rgba(167,139,250,0.1); border-color:#a78bfa; }
+ 
+@media (max-width:576px) { .contact-form-body { padding:1.25rem; } }
+</style>
+@endpush
+ 
+ 
+{{-- ===================== SCRIPTS ===================== --}}
+@push('scripts')
+<script>
+(function () {
+    'use strict';
+ 
+    const $  = id => document.getElementById(id);
+    const show = el => el.classList.remove('d-none');
+    const hide = el => el.classList.add('d-none');
+ 
+    /* ── Marcar error / válido ── */
+    const setError = (inputId, errId, msg) => {
+        const inp = $(inputId);
+        const err = $(errId);
+        if (!inp) return;
+        if (msg) {
+            inp.classList.add('is-invalid');
+            inp.classList.remove('is-valid');
+            if (err) err.textContent = msg;
+        } else {
+            inp.classList.remove('is-invalid');
+            inp.classList.add('is-valid');
+            if (err) err.textContent = '';
+        }
+    };
+ 
+    /* ── Badge dinámico por tipo ── */
+    const tipoSelect   = $('pq_tipo');
+    const badgeWrap    = $('tipoBadgeWrap');
+    const badge        = $('tipoBadge');
+    const tipoConfig   = {
+        'Queja'         : { cls: 'queja',          label: '⚠️ Queja'          },
+        'Peticio'       : { cls: 'peticion',        label: '📋 Petición'       },
+        'Felicitaciones': { cls: 'felicitaciones',  label: '🌟 Felicitaciones' },
+    };
+ 
+    if (tipoSelect) {
+        tipoSelect.addEventListener('change', () => {
+            const val = tipoSelect.value;
+            if (val && tipoConfig[val]) {
+                badge.className = 'tipo-badge ' + tipoConfig[val].cls;
+                badge.textContent = tipoConfig[val].label;
+                show(badgeWrap);
+                // limpiar error
+                const err = $('err_tipo');
+                if (err) err.textContent = '';
+                setError('pq_tipo', 'err_tipo', '');
+            } else {
+                hide(badgeWrap);
+            }
+        });
+    }
+ 
+    /* ── Char counter ── */
+    const textarea = $('pq_mensaje');
+    const counter  = $('charCounter');
+    if (textarea && counter) {
+        textarea.addEventListener('input', () => {
+            const len = textarea.value.length;
+            counter.textContent = `${len} / 600`;
+            counter.className = 'char-counter font-mono' +
+                (len > 550 ? ' warn' : '') +
+                (len >= 600 ? ' limit' : '');
+        });
+    }
+ 
+    /* ── Validación ── */
+    function validate() {
+        let ok = true;
+ 
+        // Nombres
+        const nombres = $('pq_nombres').value.trim();
+        if (!nombres)           { setError('pq_nombres','err_nombres','// nombres requeridos'); ok=false; }
+        else if (nombres.length < 2) { setError('pq_nombres','err_nombres','// mínimo 2 caracteres'); ok=false; }
+        else                    setError('pq_nombres','err_nombres','');
+ 
+        // Apellidos
+        const apellidos = $('pq_apellidos').value.trim();
+        if (!apellidos)             { setError('pq_apellidos','err_apellidos','// apellidos requeridos'); ok=false; }
+        else if (apellidos.length < 2) { setError('pq_apellidos','err_apellidos','// mínimo 2 caracteres'); ok=false; }
+        else                        setError('pq_apellidos','err_apellidos','');
+ 
+        // Correo
+        const correo  = $('pq_correo').value.trim();
+        const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!correo)               { setError('pq_correo','err_correo','// correo requerido'); ok=false; }
+        else if (!emailRx.test(correo)) { setError('pq_correo','err_correo','// formato inválido'); ok=false; }
+        else                       setError('pq_correo','err_correo','');
+ 
+        // Tipo
+        const tipo = tipoSelect ? tipoSelect.value : '';
+        if (!tipo) { setError('pq_tipo','err_tipo','// selecciona un tipo'); ok=false; }
+        else        setError('pq_tipo','err_tipo','');
+ 
+        // Mensaje
+        const msg = $('pq_mensaje').value.trim();
+        if (!msg)              { setError('pq_mensaje','err_mensaje','// mensaje requerido'); ok=false; }
+        else if (msg.length < 10) { setError('pq_mensaje','err_mensaje','// mínimo 10 caracteres'); ok=false; }
+        else                   setError('pq_mensaje','err_mensaje','');
+ 
+        // Acepto
+        const acepto    = $('pq_acepto');
+        const errAcepto = $('err_acepto');
+        if (!acepto.checked) {
+            if (errAcepto) errAcepto.textContent = '// debes aceptar la política de privacidad';
+            ok = false;
+        } else {
+            if (errAcepto) errAcepto.textContent = '';
+        }
+ 
+        return ok;
+    }
+ 
+    /* ── Submit ── */
+    const form      = $('pqrsForm');
+    const submitBtn = $('pqrsSubmitBtn');
+    const btnText   = submitBtn?.querySelector('.btn-text');
+    const btnLoad   = submitBtn?.querySelector('.btn-loading');
+    const success   = $('pqrsSuccess');
+    const resetBtn  = $('pqrsResetBtn');
+ 
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (!validate()) return;
+ 
+            submitBtn.disabled = true;
+            hide(btnText);
+            show(btnLoad);
+ 
+            /*
+             * ── Reemplaza el setTimeout con tu fetch real: ──
+             *
+             * fetch('{{ route("pqrs.store") }}', {
+             *     method: 'POST',
+             *     headers: {
+             *         'Content-Type': 'application/json',
+             *         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+             *     },
+             *     body: JSON.stringify(Object.fromEntries(new FormData(form)))
+             * })
+             * .then(r => r.json())
+             * .then(() => { hide(form); show(success); })
+             * .catch(() => { submitBtn.disabled=false; show(btnText); hide(btnLoad); });
+             */
+            setTimeout(() => {
+                hide(form);
+                show(success);
+            }, 1400);
+        });
+    }
+ 
+    /* ── Reset ── */
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            form.reset();
+            form.querySelectorAll('.heid-input').forEach(el =>
+                el.classList.remove('is-valid','is-invalid')
+            );
+            document.querySelectorAll('.field-error').forEach(e => e.textContent = '');
+            hide(badgeWrap);
+            if (counter) { counter.textContent = '0 / 600'; counter.className = 'char-counter font-mono'; }
+            submitBtn.disabled = false;
+            show(btnText);
+            hide(btnLoad);
+            hide(success);
+            show(form);
+        });
+    }
+ 
+})();
+</script>
+@endpush
+ 
+ 
+{{-- ===================== SCRIPTS ===================== --}}
+@push('scripts')
+<script>
+(function () {
+    'use strict';
+ 
+    /* ── Helpers ── */
+    const $ = id => document.getElementById(id);
+    const show = el => el.classList.remove('d-none');
+    const hide = el => el.classList.add('d-none');
+ 
+    const setError = (inputId, errId, msg) => {
+        const inp = $(inputId);
+        const err = $(errId);
+        if (msg) {
+            inp.classList.add('is-invalid');
+            inp.classList.remove('is-valid');
+            if (err) err.textContent = msg;
+        } else {
+            inp.classList.remove('is-invalid');
+            inp.classList.add('is-valid');
+            if (err) err.textContent = '';
+        }
+    };
+ 
+    /* ── Char counter ── */
+    const textarea = $('cf_mensaje');
+    const counter  = $('charCounter');
+    if (textarea && counter) {
+        textarea.addEventListener('input', () => {
+            const len = textarea.value.length;
+            counter.textContent = `${len} / 600`;
+            counter.className = 'char-counter font-mono' +
+                (len > 550 ? ' warn' : '') +
+                (len >= 600 ? ' limit' : '');
+        });
+    }
+ 
+    /* ── Module selector visual feedback ── */
+    document.querySelectorAll('.module-option input[name="modulo"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            const err = $('err_modulo');
+            if (err) err.textContent = '';
+        });
+    });
+ 
+    /* ── Validation ── */
+    function validate() {
+        let ok = true;
+ 
+        // Nombre
+        const nombre = $('cf_nombre').value.trim();
+        if (!nombre) { setError('cf_nombre','err_nombre','// nombre requerido'); ok=false; }
+        else if (nombre.length < 3) { setError('cf_nombre','err_nombre','// mínimo 3 caracteres'); ok=false; }
+        else setError('cf_nombre','err_nombre','');
+ 
+        // Email
+        const email = $('cf_email').value.trim();
+        const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email) { setError('cf_email','err_email','// email requerido'); ok=false; }
+        else if (!emailRx.test(email)) { setError('cf_email','err_email','// formato inválido'); ok=false; }
+        else setError('cf_email','err_email','');
+ 
+        // Rol
+        const rol = $('cf_rol').value;
+        if (!rol) { setError('cf_rol','err_rol','// selecciona un rol'); ok=false; }
+        else setError('cf_rol','err_rol','');
+ 
+        // Módulo
+        const modulo = document.querySelector('input[name="modulo"]:checked');
+        const errMod = $('err_modulo');
+        if (!modulo) { if(errMod) errMod.textContent = '// selecciona un módulo'; ok=false; }
+        else { if(errMod) errMod.textContent = ''; }
+ 
+        // Mensaje
+        const msg = $('cf_mensaje').value.trim();
+        if (!msg) { setError('cf_mensaje','err_mensaje','// mensaje requerido'); ok=false; }
+        else if (msg.length < 10) { setError('cf_mensaje','err_mensaje','// mínimo 10 caracteres'); ok=false; }
+        else setError('cf_mensaje','err_mensaje','');
+ 
+        return ok;
+    }
+ 
+    /* ── Submit ── */
+    const form      = $('heideContactForm');
+    const submitBtn = $('submitBtn');
+    const btnText   = submitBtn ? submitBtn.querySelector('.btn-text')    : null;
+    const btnLoad   = submitBtn ? submitBtn.querySelector('.btn-loading') : null;
+    const success   = $('successMessage');
+    const resetBtn  = $('resetFormBtn');
+ 
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (!validate()) return;
+ 
+            /* Simulate async send (replace with real fetch/axios when backend is ready) */
+            submitBtn.disabled = true;
+            hide(btnText);
+            show(btnLoad);
+ 
+            setTimeout(() => {
+                hide(form);
+                show(success);
+            }, 1400);
+        });
+    }
+ 
+    /* ── Reset ── */
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            form.reset();
+            /* Reset validation states */
+            form.querySelectorAll('.heid-input').forEach(el => {
+                el.classList.remove('is-valid','is-invalid');
+            });
+            document.querySelectorAll('.field-error').forEach(e => e.textContent = '');
+            if (counter) { counter.textContent = '0 / 600'; counter.className = 'char-counter font-mono'; }
+ 
+            /* Reset button */
+            submitBtn.disabled = false;
+            show(btnText);
+            hide(btnLoad);
+ 
+            hide(success);
+            show(form);
+        });
+    }
+ 
+})();
+</script>
+@endpush
 
 @push('styles')
 <style>
