@@ -17,3 +17,4 @@ class paginacontroller extends Controller
         return View ('pages.nosotros');
     }
 }
+ ##Creación de funciones para controlar las vistas
