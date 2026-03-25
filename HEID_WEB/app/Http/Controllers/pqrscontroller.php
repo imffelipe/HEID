@@ -26,7 +26,7 @@ class pqrscontroller extends Controller
             'acepto'=> $request->hash('accepted'),
         ]);
 
-
+        return redirect()->route('nosotros')->whith('socces','Mensaje enviado correctamente');
     }
     //Actualización
 }
