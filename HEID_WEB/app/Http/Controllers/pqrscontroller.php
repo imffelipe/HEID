@@ -25,5 +25,5 @@ class pqrscontroller extends Controller
         ]);
 
     }
-    //
+    //Actualización
 }
