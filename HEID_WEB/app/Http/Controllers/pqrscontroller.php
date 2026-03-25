@@ -21,8 +21,11 @@ class pqrscontroller extends Controller
         pqr::create([
             'nombres'=> $request->nombres,
             'apellidos'=> $request->apellidos,
-
+            'tipo'=> $request->nombres,
+            'mensajes'=> $request->mensajes,
+            'acepto'=> $request->hash('accepted'),
         ]);
+
 
     }
     //Actualización
