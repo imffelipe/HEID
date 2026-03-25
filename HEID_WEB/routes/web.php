@@ -8,6 +8,9 @@ route::get('/',[paginacontroller::class,'inicio'])->name('inicio');
 route::get('/',[paginacontroller::class,'comofunciona'])->name('comofunciona');
 route::get('/',[paginacontroller::class,'nosotros'])->name('nosotros');
 
+Route::pos('/pqrs', [PqrsController::class, 'tienda'])->name('pqrs.tienda');
+
+
 Route::get('/', function () {
     return view('index');
 })->name('home');
