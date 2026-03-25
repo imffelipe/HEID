@@ -259,7 +259,6 @@
                             </div>
                         </div>
  
-                        {{-- Badge visual del tipo seleccionado --}}
                         <div id="tipoBadgeWrap" class="mb-3 d-none">
                             <div class="tipo-badge-display">
                                 <span class="tipo-badge-label font-mono">// tipo seleccionado:</span>
@@ -267,7 +266,6 @@
                             </div>
                         </div>
  
-                        {{-- Mensaje --}}
                         <div class="form-field-group mb-3">
                             <label class="field-label" for="pq_mensaje">
                                 <i class="bi bi-chat-dots-fill"></i> Mensaje
@@ -285,7 +283,6 @@
                             </div>
                         </div>
  
-                        {{-- Acepto términos --}}
                         <div class="form-field-group mb-4">
                             <label class="acepto-label" for="pq_acepto">
                                 <div class="acepto-checkbox-wrap">
@@ -303,7 +300,6 @@
                             <span class="field-error ms-1" id="err_acepto"></span>
                         </div>
  
-                        {{-- Submit --}}
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="heid-submit-btn" id="pqrsSubmitBtn">
                                 <span class="btn-text">
@@ -318,7 +314,7 @@
  
                     </form>
  
-                    {{-- Estado de éxito --}}
+
                     <div class="contact-success d-none" id="pqrsSuccess">
                         <div class="success-icon"><i class="bi bi-check-circle-fill"></i></div>
                         <h4 class="success-title">¡PQRS enviada!</h4>
@@ -332,7 +328,6 @@
                     </div>
  
                 </div>
-                {{-- /terminal --}}
  
             </div>
         </div>
@@ -343,7 +338,7 @@
 
 @push('styles')
 <style>
-/* ── Terminal shell ── */
+
 .contact-terminal {
     background: var(--heid-bg-card, #0d1117);
     border: 1px solid var(--heid-border, rgba(255,255,255,0.08));
@@ -357,7 +352,7 @@
     box-shadow: 0 0 80px rgba(167,139,250,0.1), 0 20px 60px rgba(0,0,0,0.4);
 }
  
-/* Topbar */
+
 .terminal-topbar {
     display: flex;
     align-items: center;
@@ -381,10 +376,9 @@
 .blink-cursor { animation: blink 1.1s step-end infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
  
-/* Form body */
 .contact-form-body { padding: 2rem 2rem 1.75rem; }
  
-/* Field groups */
+
 .form-field-group { display:flex; flex-direction:column; }
 .field-label {
     font-family: var(--font-mono,'Courier New',monospace);
@@ -399,7 +393,7 @@
 }
 .field-required { color: #f87171; font-size:0.65rem; }
  
-/* Inputs */
+
 .field-input-wrap { position:relative; }
 .heid-input {
     width: 100%;
@@ -425,7 +419,7 @@
 }
 .heid-input.is-valid { border-color: rgba(52,211,153,0.5); }
  
-/* Select */
+
 .field-select-wrap { position:relative; }
 .heid-select { appearance:none; cursor:pointer; padding-right:2.5rem; }
 .select-chevron {
@@ -441,7 +435,6 @@
 .heid-select:focus ~ .select-chevron { transform: translateY(-50%) rotate(180deg); }
 .heid-select option { background: #1a1f2e; color: #e4e8f0; }
  
-/* Tipo badge */
 .tipo-badge-display {
     display: inline-flex;
     align-items: center;
@@ -464,15 +457,15 @@
 .tipo-badge.peticion      { background:rgba(0,229,255,0.1);    color:var(--heid-cyan,#00e5ff); border:1px solid rgba(0,229,255,0.25); }
 .tipo-badge.felicitaciones{ background:rgba(167,139,250,0.12); color:#a78bfa; border:1px solid rgba(167,139,250,0.3); }
  
-/* Textarea */
+
 .heid-textarea { resize: vertical; min-height: 110px; line-height:1.6; }
  
-/* Char counter */
+
 .char-counter { font-size:0.68rem; color:var(--heid-text-dim,#8892a4); transition:color 0.2s; }
 .char-counter.warn  { color:#febc2e; }
 .char-counter.limit { color:#f87171; }
  
-/* Animated bottom line on focus */
+
 .field-line {
     position: absolute;
     bottom: 0;
@@ -487,7 +480,7 @@
 }
 .heid-input:focus ~ .field-line { width: calc(100% - 16px); }
  
-/* Field error */
+
 .field-error {
     font-size: 0.7rem;
     color: #f87171;
@@ -495,8 +488,7 @@
     margin-top: 0.2rem;
     font-family: var(--font-mono,'Courier New',monospace);
 }
- 
-/* ── Acepto checkbox personalizado ── */
+
 .acepto-label {
     display: flex;
     align-items: flex-start;
@@ -545,8 +537,7 @@
 }
 .acepto-link { color:#a78bfa; text-decoration:none; border-bottom:1px dashed rgba(167,139,250,0.4); }
 .acepto-link:hover { color:#c4b5fd; border-bottom-color:#c4b5fd; }
- 
-/* ── Submit button ── */
+
 .heid-submit-btn {
     background: linear-gradient(135deg, #7c3aed, #a78bfa);
     color: #fff;
@@ -576,7 +567,7 @@
 .heid-submit-btn:active { transform:translateY(0); }
 .heid-submit-btn:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
  
-/* ── Success state ── */
+
 .contact-success {
     padding: 3rem 2rem;
     text-align: center;
@@ -609,8 +600,7 @@
 </style>
 @endpush
  
- 
-{{-- ===================== SCRIPTS ===================== --}}
+
 @push('scripts')
 <script>
 (function () {
@@ -620,7 +610,7 @@
     const show = el => el.classList.remove('d-none');
     const hide = el => el.classList.add('d-none');
  
-    /* ── Marcar error / válido ── */
+
     const setError = (inputId, errId, msg) => {
         const inp = $(inputId);
         const err = $(errId);
@@ -635,8 +625,7 @@
             if (err) err.textContent = '';
         }
     };
- 
-    /* ── Badge dinámico por tipo ── */
+
     const tipoSelect   = $('pq_tipo');
     const badgeWrap    = $('tipoBadgeWrap');
     const badge        = $('tipoBadge');
@@ -653,7 +642,7 @@
                 badge.className = 'tipo-badge ' + tipoConfig[val].cls;
                 badge.textContent = tipoConfig[val].label;
                 show(badgeWrap);
-                // limpiar error
+
                 const err = $('err_tipo');
                 if (err) err.textContent = '';
                 setError('pq_tipo', 'err_tipo', '');
@@ -663,7 +652,7 @@
         });
     }
  
-    /* ── Char counter ── */
+
     const textarea = $('pq_mensaje');
     const counter  = $('charCounter');
     if (textarea && counter) {
@@ -676,41 +665,37 @@
         });
     }
  
-    /* ── Validación ── */
+
     function validate() {
         let ok = true;
- 
-        // Nombres
+
         const nombres = $('pq_nombres').value.trim();
         if (!nombres)           { setError('pq_nombres','err_nombres','// nombres requeridos'); ok=false; }
         else if (nombres.length < 2) { setError('pq_nombres','err_nombres','// mínimo 2 caracteres'); ok=false; }
         else                    setError('pq_nombres','err_nombres','');
  
-        // Apellidos
         const apellidos = $('pq_apellidos').value.trim();
         if (!apellidos)             { setError('pq_apellidos','err_apellidos','// apellidos requeridos'); ok=false; }
         else if (apellidos.length < 2) { setError('pq_apellidos','err_apellidos','// mínimo 2 caracteres'); ok=false; }
         else                        setError('pq_apellidos','err_apellidos','');
  
-        // Correo
         const correo  = $('pq_correo').value.trim();
         const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!correo)               { setError('pq_correo','err_correo','// correo requerido'); ok=false; }
         else if (!emailRx.test(correo)) { setError('pq_correo','err_correo','// formato inválido'); ok=false; }
         else                       setError('pq_correo','err_correo','');
  
-        // Tipo
+    
         const tipo = tipoSelect ? tipoSelect.value : '';
         if (!tipo) { setError('pq_tipo','err_tipo','// selecciona un tipo'); ok=false; }
         else        setError('pq_tipo','err_tipo','');
  
-        // Mensaje
+    
         const msg = $('pq_mensaje').value.trim();
         if (!msg)              { setError('pq_mensaje','err_mensaje','// mensaje requerido'); ok=false; }
         else if (msg.length < 10) { setError('pq_mensaje','err_mensaje','// mínimo 10 caracteres'); ok=false; }
         else                   setError('pq_mensaje','err_mensaje','');
- 
-        // Acepto
+
         const acepto    = $('pq_acepto');
         const errAcepto = $('err_acepto');
         if (!acepto.checked) {
@@ -723,7 +708,7 @@
         return ok;
     }
  
-    /* ── Submit ── */
+   
     const form      = $('pqrsForm');
     const submitBtn = $('pqrsSubmitBtn');
     const btnText   = submitBtn?.querySelector('.btn-text');
@@ -740,21 +725,6 @@
             hide(btnText);
             show(btnLoad);
  
-            /*
-             * ── Reemplaza el setTimeout con tu fetch real: ──
-             *
-             * fetch('{{ route("pqrs.store") }}', {
-             *     method: 'POST',
-             *     headers: {
-             *         'Content-Type': 'application/json',
-             *         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-             *     },
-             *     body: JSON.stringify(Object.fromEntries(new FormData(form)))
-             * })
-             * .then(r => r.json())
-             * .then(() => { hide(form); show(success); })
-             * .catch(() => { submitBtn.disabled=false; show(btnText); hide(btnLoad); });
-             */
             setTimeout(() => {
                 hide(form);
                 show(success);
@@ -762,7 +732,7 @@
         });
     }
  
-    /* ── Reset ── */
+
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {
             form.reset();
@@ -775,140 +745,6 @@
             submitBtn.disabled = false;
             show(btnText);
             hide(btnLoad);
-            hide(success);
-            show(form);
-        });
-    }
- 
-})();
-</script>
-@endpush
- 
- 
-{{-- ===================== SCRIPTS ===================== --}}
-@push('scripts')
-<script>
-(function () {
-    'use strict';
- 
-    /* ── Helpers ── */
-    const $ = id => document.getElementById(id);
-    const show = el => el.classList.remove('d-none');
-    const hide = el => el.classList.add('d-none');
- 
-    const setError = (inputId, errId, msg) => {
-        const inp = $(inputId);
-        const err = $(errId);
-        if (msg) {
-            inp.classList.add('is-invalid');
-            inp.classList.remove('is-valid');
-            if (err) err.textContent = msg;
-        } else {
-            inp.classList.remove('is-invalid');
-            inp.classList.add('is-valid');
-            if (err) err.textContent = '';
-        }
-    };
- 
-    /* ── Char counter ── */
-    const textarea = $('cf_mensaje');
-    const counter  = $('charCounter');
-    if (textarea && counter) {
-        textarea.addEventListener('input', () => {
-            const len = textarea.value.length;
-            counter.textContent = `${len} / 600`;
-            counter.className = 'char-counter font-mono' +
-                (len > 550 ? ' warn' : '') +
-                (len >= 600 ? ' limit' : '');
-        });
-    }
- 
-    /* ── Module selector visual feedback ── */
-    document.querySelectorAll('.module-option input[name="modulo"]').forEach(radio => {
-        radio.addEventListener('change', () => {
-            const err = $('err_modulo');
-            if (err) err.textContent = '';
-        });
-    });
- 
-    /* ── Validation ── */
-    function validate() {
-        let ok = true;
- 
-        // Nombre
-        const nombre = $('cf_nombre').value.trim();
-        if (!nombre) { setError('cf_nombre','err_nombre','// nombre requerido'); ok=false; }
-        else if (nombre.length < 3) { setError('cf_nombre','err_nombre','// mínimo 3 caracteres'); ok=false; }
-        else setError('cf_nombre','err_nombre','');
- 
-        // Email
-        const email = $('cf_email').value.trim();
-        const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!email) { setError('cf_email','err_email','// email requerido'); ok=false; }
-        else if (!emailRx.test(email)) { setError('cf_email','err_email','// formato inválido'); ok=false; }
-        else setError('cf_email','err_email','');
- 
-        // Rol
-        const rol = $('cf_rol').value;
-        if (!rol) { setError('cf_rol','err_rol','// selecciona un rol'); ok=false; }
-        else setError('cf_rol','err_rol','');
- 
-        // Módulo
-        const modulo = document.querySelector('input[name="modulo"]:checked');
-        const errMod = $('err_modulo');
-        if (!modulo) { if(errMod) errMod.textContent = '// selecciona un módulo'; ok=false; }
-        else { if(errMod) errMod.textContent = ''; }
- 
-        // Mensaje
-        const msg = $('cf_mensaje').value.trim();
-        if (!msg) { setError('cf_mensaje','err_mensaje','// mensaje requerido'); ok=false; }
-        else if (msg.length < 10) { setError('cf_mensaje','err_mensaje','// mínimo 10 caracteres'); ok=false; }
-        else setError('cf_mensaje','err_mensaje','');
- 
-        return ok;
-    }
- 
-    /* ── Submit ── */
-    const form      = $('heideContactForm');
-    const submitBtn = $('submitBtn');
-    const btnText   = submitBtn ? submitBtn.querySelector('.btn-text')    : null;
-    const btnLoad   = submitBtn ? submitBtn.querySelector('.btn-loading') : null;
-    const success   = $('successMessage');
-    const resetBtn  = $('resetFormBtn');
- 
-    if (form) {
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            if (!validate()) return;
- 
-            /* Simulate async send (replace with real fetch/axios when backend is ready) */
-            submitBtn.disabled = true;
-            hide(btnText);
-            show(btnLoad);
- 
-            setTimeout(() => {
-                hide(form);
-                show(success);
-            }, 1400);
-        });
-    }
- 
-    /* ── Reset ── */
-    if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-            form.reset();
-            /* Reset validation states */
-            form.querySelectorAll('.heid-input').forEach(el => {
-                el.classList.remove('is-valid','is-invalid');
-            });
-            document.querySelectorAll('.field-error').forEach(e => e.textContent = '');
-            if (counter) { counter.textContent = '0 / 600'; counter.className = 'char-counter font-mono'; }
- 
-            /* Reset button */
-            submitBtn.disabled = false;
-            show(btnText);
-            hide(btnLoad);
- 
             hide(success);
             show(form);
         });
